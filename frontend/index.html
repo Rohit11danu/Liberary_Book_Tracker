@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <div class="logo-icon">📚</div>
+                <h2>LibraryHub</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-view="dashboard">
+                    <span class="icon">🏠</span> Dashboard
+                </button>
+                <button class="nav-item" data-view="add-book">
+                    <span class="icon">➕</span> Add New Book
+                </button>
+            </nav>
+
+            <div class="stats-card glass-panel">
+                <h3>Library Stats</h3>
+                <div class="stat-row">
+                    <span>Total Books:</span>
+                    <span id="total-books-count">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Borrowed:</span>
+                    <span id="borrowed-books-count">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div>
+                    <h1 id="page-title">Dashboard</h1>
+                    <p class="subtitle" id="page-subtitle">Manage your entire book collection</p>
+                </div>
+                
+                <div class="search-container glass-panel">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Search by title or author...">
+                </div>
+            </header>
+
+            <div class="view-container" id="dashboard-view">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All Books</button>
+                    <button class="filter-btn" data-filter="available">Available</button>
+                    <button class="filter-btn" data-filter="borrowed">Borrowed</button>
+                </div>
+
+                <div class="books-grid" id="books-grid">
+                    <!-- Books will be dynamically injected here -->
+                </div>
+                
+                <div class="empty-state hidden" id="empty-state">
+                    <div class="empty-icon">📖</div>
+                    <h3>No books found</h3>
+                    <p>Add some books to your library or modify your search.</p>
+                </div>
+            </div>
+
+            <div class="view-container hidden" id="add-book-view">
+                <div class="form-container glass-panel">
+                    <h2>Add a New Book</h2>
+                    <form id="add-book-form">
+                        <div class="input-group">
+                            <label for="book-title">Book Title</label>
+                            <input type="text" id="book-title" required placeholder="e.g. The Pragmatic Programmer">
+                        </div>
+                        <div class="input-group">
+                            <label for="book-author">Author Name</label>
+                            <input type="text" id="book-author" required placeholder="e.g. Andy Hunt">
+                        </div>
+                        <button type="submit" class="primary-btn">
+                            <span class="btn-text">Add to Library</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
